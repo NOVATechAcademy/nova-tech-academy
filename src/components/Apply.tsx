@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
+import * as XLSX from 'xlsx';
 import emailjs from '@emailjs/browser';
 
 const Apply: React.FC = () => {
@@ -46,7 +47,7 @@ const Apply: React.FC = () => {
         newErrors.dateOfBirth = 'Please enter your date of birth in mm/dd/yyyy format.';
       }
       if (!formData.gender || formData.gender.length > 50) {
-        newErrors.gender = 'Please enter your gender or write NA if you wishe to not disclose (max 50 characters).';
+        newErrors.gender = 'Please enter your gender or write NA if you wish not to disclose (max 50 characters).';
       }
       if (!formData.isUSCitizen) {
         newErrors.isUSCitizen = 'Please select if you are a US citizen.';
@@ -107,32 +108,51 @@ const Apply: React.FC = () => {
     return doc;
   };
 
+  const generateExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet([formData]);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Application');
+    const excelFile = XLSX.write(workbook, { bookType: 'xlsx', type: 'base64' });
+
+    return excelFile;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateFields()) return;
-
+  
     try {
+      // Generate PDF
       const pdf = generatePDF();
       const pdfBase64 = pdf.output('datauristring').split(',')[1];
-
+  
+      // Generate Excel
+      const excelBase64 = generateExcel();
+  
+      // Send both files via EmailJS
       await emailjs.send(
-        'novaleadingtech',
-        'template_lr0v7id',
+        'novaleadingtech', // Replace with your service ID
+        'template_lr0v7id', // Replace with your template ID
         {
-          pdf_file: pdfBase64,
+          pdf_file: `data:application/pdf;base64,${pdfBase64}`,
+          excel_file: `data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,${excelBase64}`,
+          file_name_pdf: 'application.pdf',
+          file_name_excel: 'application.xlsx',
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
         },
-        'jnkxiSDK6lXbN2X26'
+        'jnkxiSDK6lXbN2X26' // Replace with your public key
       );
-
+  
       navigate('/success');
     } catch (error) {
       navigate('/error');
     }
   };
-
+  
+  
+  
   return (
     <div className="form-container">
       <h1 className="form-title">Apply to NOVA Tech Academy</h1>
