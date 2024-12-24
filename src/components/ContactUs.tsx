@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { useNavigate } from 'react-router-dom';
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const ContactUs: React.FC = () => {
     email: '',
     message: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -19,7 +21,6 @@ const ContactUs: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Send the form data using EmailJS
     emailjs
       .send(
         'novaleadingtech', // Replace with your EmailJS service ID
@@ -28,19 +29,13 @@ const ContactUs: React.FC = () => {
         'jnkxiSDK6lXbN2X26' // Replace with your EmailJS public key
       )
       .then(
-        (result) => {
-          alert('Message sent successfully!');
-          setFormData({
-            firstName: '',
-            lastName: '',
-            middleName: '',
-            phone: '',
-            email: '',
-            message: '',
-          });
+        () => {
+          // On success, redirect to SuccessMessage
+          navigate('/success-message');
         },
-        (error) => {
-          alert('Failed to send message. Please try again.');
+        () => {
+          // On failure, redirect to ErrorMessage
+          navigate('/error-message');
         }
       );
   };
@@ -119,7 +114,9 @@ const ContactUs: React.FC = () => {
           ></textarea>
         </div>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" className="btn">
+          Send Message
+        </button>
       </form>
     </div>
   );
