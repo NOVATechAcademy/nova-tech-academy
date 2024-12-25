@@ -120,19 +120,17 @@ const Apply: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateFields()) return;
-  
+
     try {
-      // Generate PDF
+      // Generate PDF and Excel
       const pdf = generatePDF();
       const pdfBase64 = pdf.output('datauristring').split(',')[1];
-  
-      // Generate Excel
       const excelBase64 = generateExcel();
-  
-      // Send both files via EmailJS
+
+      // Admin Email
       await emailjs.send(
         'novaleadingtech', // Replace with your service ID
-        'template_lr0v7id', // Replace with your template ID
+        'template_lr0v7id', // Replace with your admin email template ID
         {
           pdf_file: `data:application/pdf;base64,${pdfBase64}`,
           excel_file: `data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,${excelBase64}`,
@@ -144,15 +142,25 @@ const Apply: React.FC = () => {
         },
         'jnkxiSDK6lXbN2X26' // Replace with your public key
       );
-  
+
+      // User Auto-Reply Email
+      await emailjs.send(
+        'novaleadingtech', // Replace with your service ID
+        'template_zimvlsr', // Replace with your auto-reply email template ID
+        {
+          firstName: formData.firstName,
+          email: formData.email,
+        },
+        'jnkxiSDK6lXbN2X26' // Replace with your public key
+      );
+
       navigate('/success');
     } catch (error) {
+      console.error('Failed to send emails:', error);
       navigate('/error');
     }
   };
-  
-  
-  
+
   return (
     <div className="form-container">
       <h1 className="form-title">Apply to NOVA Tech Academy</h1>

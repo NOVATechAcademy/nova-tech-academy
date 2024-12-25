@@ -1,3 +1,5 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 /* General Styles */
 body {
   font-family: 'Arial', sans-serif;
@@ -57,11 +59,11 @@ h2 {
 
 /* Hero Section */
 .background-banner {
-  background-image: url('https://via.placeholder.com/1920x600'); /* Replace with your image */
+  background-image: url('/public/images/background.jpg'); /* Replace with your image */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: white;
+  color: #f9f0f1;
   text-align: center;
   padding: 120px 20px;
   position: relative;
@@ -169,6 +171,7 @@ h2 {
 /* Form Groups */
 .form-group {
   margin-bottom: 20px;
+  color: #0a0101;
 }
 
 .form-group label {
@@ -178,9 +181,9 @@ h2 {
 }
 
 .form-input {
-  width: 100%;
+  width: 95%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #0a0101;
   border-radius: 5px;
   font-size: 1rem;
 }
@@ -214,7 +217,7 @@ h2 {
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -288,7 +291,7 @@ footer p {
 /* Success/Error Pages */
 .success-message h1,
 .error-message h1 {
-  color: red;
+  color: rgb(9, 1, 1);
   font-size: 2rem;
   text-align: center;
   margin-bottom: 20px;
@@ -298,7 +301,7 @@ footer p {
 .error-message p {
   text-align: center;
   font-size: 1.2rem;
-  color: #555;
+  color: #090000;
 }
 
 .success-message button,
@@ -356,9 +359,344 @@ footer p {
   transition: background-color 0.3s ease;
 }
 
+.success-container {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.success-title {
+  color: rgb(12, 12, 12);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.success-container .btn {
+  display: inline-block;
+  background-color: #2a2a72;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .error-container .btn:hover {
   background-color: #ffdd40;
   color: #2a2a72;
 }
 
+/* General container styling */
+.programs-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.programs-title {
+  font-size: 2rem;
+  color: #2a2a72;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Description and list styling */
+.programs-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.programs-list {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  list-style: disc;
+  color: #333;
+}
+
+/* Program details box styling */
+.program-details {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.program-info {
+  text-align: center;
+}
+
+.program-name {
+  font-size: 1.5rem;
+  color: #7b1fa2;
+  margin-bottom: 10px;
+}
+
+.program-info p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Apply button styling */
+.apply-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: white;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+  background-color: #e64a19;
+}
+
+/* Apply 3D background to body */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #80002a; /* Base color similar to the image */
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0px,
+    rgba(255, 255, 255, 0.1) 10px,
+    rgba(255, 255, 255, 0.05) 10px,
+    rgba(255, 255, 255, 0.05) 20px
+  );
+  color: #fff; /* Update text color for readability */
+  background-size: cover; /* Cover the entire viewport */
+  background-attachment: fixed; /* Fix background on scroll */
+}
+
+/* Adjust all container sections */
+.container {
+  background-color: rgba(255, 255, 255, 0.8); /* Slight opacity for contrast */
+  color: #333; /* Text color adjustment */
+  padding: 20px;
+  border-radius: 10px; /* Smooth edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add depth to containers */
+}
+
+/* Titles on colored background */
+h1{
+  color: #ffffff; /* White text for titles */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Text depth effect */
+}
+h2 {
+  color: #060000; /* White text for titles */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Text depth effect */
+}
+
+/* Buttons */
+button {
+  background-color: #ffdd40; /* Highlight button color */
+  color: #80002a;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #ffd700;
+  transform: scale(1.05); /* Add hover effect */
+}
+
+/* Navbar with transparent background */
+.navbar {
+  background-color: rgba(72, 4, 4, 0.5); /* Semi-transparent background */
+  color: #ffffff;
+}
+
+.about-us-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #2a2a72;
+  margin-bottom: 20px;
+}
+
+.about-us-intro {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.about-us-section {
+  margin-bottom: 30px;
+}
+
+.about-us-section h2 {
+  font-size: 1.5rem;
+  color: #2a2a72;
+  margin-bottom: 15px;
+}
+
+.about-us-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #555;
+}
+.about-us-section p {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #555;
+}
+
+.about-us-section li {
+  margin-bottom: 15px;
+}
+
+.about-us-contact {
+  background-color: #2a2a72;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.about-us-contact a {
+  color: #eceff5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.about-us-contact a:hover {
+  text-decoration: underline;
+}
+.contact-us-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #560809;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-us-button:hover {
+  background-color: #050546;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #2a2a72;
+  margin-bottom: 20px;
+}
+
+.faq-list {
+  margin-top: 20px;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-question {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.faq-answer {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* WhatsApp Container Styling */
+.whatsapp-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* WhatsApp Link */
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px; /* Spacing between icon and text */
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon {
+  background-color: #25d366;
+  color: white;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+  background-color: #20b357;
+}
+
+/* WhatsApp Text */
+.whatsapp-text {
+  font-size: 1.2rem;
+  color: #020007;
+  font-weight: bold;
+}
+
+.whatsapp-link:hover .whatsapp-text {
+  color: #20b357;
+}
 

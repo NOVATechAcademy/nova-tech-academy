@@ -47,6 +47,19 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Icon with Text */}
+      <div className="whatsapp-container">
+        <a
+          href="https://wa.me/17036498778"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-link"
+        >
+          <i className="fab fa-whatsapp whatsapp-icon"></i>
+          <span className="whatsapp-text">WhatsApp us</span>
+        </a>
+      </div>
     </div>
   );
 };
